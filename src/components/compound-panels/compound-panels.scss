@@ -1,0 +1,25 @@
+.compound-panels {
+	margin: 0;
+	padding: 0;
+
+	&__panel {
+		margin: 0;
+		list-style-type: none;
+
+		& > div {
+			padding: 1em 2em;
+		}
+		& > button[aria-expanded="false"] ~ div {
+			display: none;
+		}
+	}
+
+	&__title {
+		-webkit-appearance: none;
+		border: none;
+		background-color: #f1f2f2; // gray-lightest
+		padding: 7px;
+		cursor: pointer;
+		width: 100%;
+	}
+}

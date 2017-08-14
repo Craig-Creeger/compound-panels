@@ -1,0 +1,75 @@
+/*******************************
+ * Justify Grid                *
+ * --------------------------- *
+ * This grid works great for hand-coded sites where the HTML is NOT minified or brought in
+ * via AJAX.
+ *
+ * Based on http://www.barrelny.com/blog/text-align-justify-and-rwd/
+ *      and http://justifygrid.com/
+ *
+ * Note: There are a couple of problems using this type of grid.
+ *       1. To get rid of weird spacing (of the last pseudo inline-block) you
+ *          will need to add font-size: 0.1px to .gridJustify, but that changes
+ *          the font-size on the column items.
+ *       2. There MUST be white space between the columns. i.e. ...</div> <div class="column">...
+ *          If not, then the columns will not get a gutter space (because justify 
+ *          calculates the width of the space between inline items).
+ *******************************/
+$gap: 1.5;
+
+.gridJustify {
+	text-align: justify;
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	
+	&.reverse {
+		direction: rtl;
+	}
+	.column {
+		display: inline-block;
+		text-align: left;
+		width: 100%;
+		margin: 1em 0 0;
+		vertical-align: top;
+		direction: ltr;
+		
+		img {
+			max-width: 100%;
+		}
+		
+		/* These are some sensible defaults for the grid size based on screen width. */
+		@media screen and (min-width: 480px) {
+			width: 50% - $gap;
+		}
+		@media screen and (min-width: 768px) {
+			width: 33.33% - $gap;
+			&.half {
+				width: 50% - $gap;
+			}
+		}
+		@media screen and (min-width: 1024px) {
+			width: 25% - $gap;
+			&.half {
+				width: 50% - $gap;
+			}
+			&.third {
+				width: 33.33% - $gap;
+			}
+		}
+	}
+	/*
+	 * Placeholder “cells” are useful when you want the last row of
+	 * items all pushed left (vs. distributed). The number of
+	 * placeholder columns to create are calculated as:
+	 *
+	 * Nbr of placeholders = Max columns per row - 2;
+	 */
+	
+	.placeholder {
+		padding: 0;
+		height: 0;
+	}
+}

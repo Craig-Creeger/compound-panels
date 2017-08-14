@@ -1,0 +1,62 @@
+{
+  "name": "compound-panels",
+  "version": "1.0.0",
+  "description": "A React component to make Accordion and Collapsible panels",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --progress --env 'dev'",
+    "stats": "webpack -p --json --env 'prod' > webpack.stats.json",
+    "clean": "rm -rf coverage dist",
+    "build": "npm run clean; webpack -p --env 'prod'",
+    "build:dev": "npm run clean; webpack --env 'dev'",
+    "prepublish": "npm run build",
+    "healthcheck": "npm run lint && npm run prettier && npm run test",
+    "prettier": "prettier-eslint 'src/**/*.js' --list-different --use-tabs --print-width 100 --jsx-bracket-same-line true --single-quote true",
+    "lint": "eslint . --rule 'no-console: 2' --rule 'no-debugger: 2'",
+    "lint:fix": "npm run prettier -- --write",
+    "test": "jest",
+    "test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
+    "test:ci": "jest --watch",
+    "sass": "node-sass src/app.scss --output dist/"
+  },
+  "author": "Craig Creeger",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.1.1",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-react": "^7.0.1",
+    "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "prettier-eslint-cli": "^4.1.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.5.4",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  }
+}

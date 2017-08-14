@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import 'sass/normalize';
+@import 'sass/colorsVariables';
+@import 'sass/typography';
+@import 'sass/gridTable';
+@import 'sass/gridJustify';
+@import 'sass/structureLayout';
+@import 'sass/elementsMisc';
+
+//This website's styles are coded here.
+header {
+	background-color: $uiBkgdAlt;
+	background-image: url('./img/logo.svg');
+	background-position: 1em 1em;
+	background-size: 1em;
+	background-repeat: no-repeat;
+	
+	h1 {
+		color: $darkAccent;
+		padding: 0 2em;
+	}
+}
+
+//End this website.
+@import 'sass/helpers';
