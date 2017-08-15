@@ -5,16 +5,12 @@ import CompPanel from './comp-panel'
 import './compound-panels.scss'
 
 class CompoundPanels extends React.Component {
-	/* Accordion = One, and only one, panel is expanded at all times.
-	independent = Individual collapsible panels. Not restrictions on which can be open or closed.
-	collapsibleAccordion = Like accordion, but possible to collapse all the panels. */
 	constructor (props) {
 		super(props)
 		this.state = {
-			panelsType: props.panelsType,
 			activePanels: props.activePanels
 		}
-		this.togglePanel = this.togglePanel.bind(this)
+		this.generatePanels(this.props, this.state)
 	}
 
 	render () {
@@ -28,48 +24,20 @@ class CompoundPanels extends React.Component {
 		)
 	}
 
-	componentWillMount () {
-		this.generatePanels()
-	}
-
-	componentWillUpdate (nextProps, nextState) {
-		this.generatePanels(nextProps, nextState)
-	}
-
-	generatePanels (nextProps = this.props, nextState = this.state) {
-		this.compPanels = React.Children.map(nextProps.children, (panel, idx) => {
+	generatePanels (props, state) {
+		this.compPanels = React.Children.map(props.children, (panel, idx) => {
 			return (
 				<CompPanel
 					title={panel.props.title}
 					uniqueId={String(idx)}
 					key={idx}
-					isActive={nextState.activePanels.includes(idx)}
-					togglePanel={this.togglePanel}
+					isActive={state.activePanels.includes(idx)}
+					height={panel.props.height}
 				>
 					{panel.props.children}
 				</CompPanel>
 			)
 		})
-	}
-
-	togglePanel (panelIndex) {
-		panelIndex = parseInt(panelIndex, 10)
-		const isClosed = !this.state.activePanels.includes(panelIndex)
-		if (
-			this.state.panelsType === 'accordion' ||
-			(this.state.panelsType === 'collapsibleAccordion' && isClosed)
-		) {
-			// Replace activePanels
-			this.setState({ activePanels: [panelIndex] })
-		} else if (isClosed) {
-			// Add to activePanels
-			this.setState({ activePanels: [...this.state.activePanels, panelIndex] })
-		} else {
-			this.setState({
-				// Remove from activePanels
-				activePanels: this.state.activePanels.filter(item => item !== panelIndex) || []
-			})
-		}
 	}
 }
 
@@ -80,7 +48,6 @@ CompoundPanels.propTypes = {
 }
 
 CompoundPanels.defaultProps = {
-	panelsType: 'accordion',
 	activePanels: [0]
 }
 

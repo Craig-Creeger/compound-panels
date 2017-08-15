@@ -10,7 +10,8 @@ export default function (env) {
 		// Context is the path for resolving `entry`, loaders, and other files in this config file.
 		context: path.join(__dirname, 'src'),
 		entry: {
-			main: './index.js'
+			main: './index.js',
+			client: './client/client.js'
 		},
 		output: {
 			path: path.join(__dirname, 'dist'),
@@ -112,15 +113,11 @@ export default function (env) {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({ template: './preview/index.html' }),
-			// new webpack.optimize.ModuleConcatenationPlugin(),
 			new CopyWebpackPlugin([
 				{ from: './preview/', to: '.', ignore: './preview/index.html' },
 				{ from: './favicon.ico', to: './[name].[ext]' }
 			])
 		],
-		/* These options are for webpack-dev-server. This is to redirect all unknown URL’s to our
-			 Express server, which is our mock API server.
-		*/
 		devServer: {
 			contentBase: path.join(__dirname, 'dist'),
 			compress: true,

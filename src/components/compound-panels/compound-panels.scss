@@ -1,3 +1,5 @@
+$animationSpeed: 400ms;
+
 .compound-panels {
 	margin: 0;
 	padding: 0;
@@ -6,12 +8,17 @@
 		margin: 0;
 		list-style-type: none;
 
-		& > div {
-			padding: 1em 2em;
+		& > button[aria-expanded="false"] ~ .compound-panels__content {
+			height: 0px !important;
+			transition: height $animationSpeed ease-in-out
 		}
-		& > button[aria-expanded="false"] ~ div {
-			display: none;
-		}
+	}
+	
+	&__content {
+		padding: 0 2em;
+		box-sizing: border-box;
+		overflow: hidden;
+		transition: height $animationSpeed ease-in-out
 	}
 
 	&__title {
@@ -22,4 +29,9 @@
 		cursor: pointer;
 		width: 100%;
 	}
+}
+
+// This will come from Bootstrap
+.hidden {
+	display: none !important;
 }
