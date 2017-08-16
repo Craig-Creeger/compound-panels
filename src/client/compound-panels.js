@@ -7,8 +7,6 @@ export default class CompoundPanels {
 			.addEventListener('click', this.bubbleCompoundPanel.bind(this))
 	}
 
-	// Hook-up event listeners on <button class="compound-panels__title">
-
 	bubbleCompoundPanel (evt) {
 		if (evt.target && evt.target.matches('button.compound-panels__title')) {
 			this.toggleCompoundPanel(this.extractIndex(evt.target))
@@ -62,7 +60,7 @@ export default class CompoundPanels {
 		const panels = document.querySelectorAll('.compound-panels__title')
 		const activePanels = []
 		panels.forEach((elem, idx) => {
-			if (elem.getAttribute('aria-expanded')) {
+			if (elem.getAttribute('aria-expanded') === 'true') {
 				activePanels.push(parseInt(idx, 10))
 			}
 		})
