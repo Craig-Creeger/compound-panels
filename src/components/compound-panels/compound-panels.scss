@@ -10,7 +10,7 @@ $animationSpeed: 400ms;
 
 		& > button[aria-expanded="false"] ~ .compound-panels__content {
 			height: 0px !important;
-			transition: height $animationSpeed ease-in-out
+			transition: height $animationSpeed ease-in-out;
 		}
 	}
 	
@@ -18,12 +18,12 @@ $animationSpeed: 400ms;
 		padding: 0 2em;
 		box-sizing: border-box;
 		overflow: hidden;
-		transition: height $animationSpeed ease-in-out
+		transition: height $animationSpeed ease-in-out;
 	}
 
 	&__title {
 		-webkit-appearance: none;
-		border: none;
+		border: thin solid #c3c4c4; // gray
 		background-color: #f1f2f2; // gray-lightest
 		padding: 7px;
 		cursor: pointer;
