@@ -23,7 +23,7 @@ const CompPanel = ({ children, uniqueId, title, isActive, togglePanel }) => {
 }
 
 CompPanel.propTypes = {
-	children: PropTypes.element.isRequired,
+	children: PropTypes.node.isRequired,
 	uniqueId: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	isActive: PropTypes.bool.isRequired,
