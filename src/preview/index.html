@@ -1,15 +1,44 @@
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<title>Compound Panels Demo</title>
 	<style>
+		ul.listFix, ol.listFix {
+			margin:1em 0;
+			padding:0;
+		}
+		.listFix li {
+			position:relative;
+			left:2.5em;
+			margin-right:2.5em;
+		}
 		@media only screen and (min-width: 600px) {
 			main {
 				width: 600px;
 				margin: 0 auto;
 			}
+		}
+		
+		@media only screen and (min-width: 900px) {
+			main {
+				float: left;
+				margin-right: 2em;
+			}
+			section {
+				overflow: hidden;
+			}
+		}
+
+		fieldset label {
+			display: block;
+			margin-left: 30px;
+		}
+		fieldset input {
+			float:left;
+			margin-left: -30px;
 		}
 	</style>
 </head>
@@ -18,16 +47,21 @@
 	<header>
 		<h1>Compound Panels Demo</h1>
 	</header>
-	
-	<!-- The React App will get rendered into #reactApp. -->
-	<main id="reactApp">If you can read this then the app is not working. Check the console and
-		terminal for errors.</main>
 
-	<footer style="margin-top: 3em;">
+	<!-- The React App will get rendered into #reactApp. -->
+	<main id="reactApp">If you can read this then the app is not working. Check the console and terminal for errors.</main>
+
+	<section>
+		<p>The Compound Panels component is capable of three different display modes.</p>
+		<div id="scenario"></div>
+	</section>
+
+	<footer style="padding-top: 3em; clear: both;">
 		<small>2017 — All rights reserved.</small>
 	</footer>
 	<!-- These are the external dependencies. -->
 	<script src="./react.js"></script>
 	<script src="./react-dom.js"></script>
 </body>
+
 </html>

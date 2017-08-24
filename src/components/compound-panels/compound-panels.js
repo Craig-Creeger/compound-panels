@@ -5,7 +5,7 @@ import CompPanel from './comp-panel'
 import './compound-panels.scss'
 
 class CompoundPanels extends React.Component {
-	/* Accordion = One, and only one, panel is expanded at all times.
+	/* accordion = One, and only one, panel is expanded at all times.
 	independent = Individual collapsible panels. Not restrictions on which can be open or closed.
 	collapsibleAccordion = Like accordion, but possible to collapse all the panels. */
 	constructor (props) {
