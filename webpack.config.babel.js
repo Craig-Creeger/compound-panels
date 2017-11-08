@@ -14,10 +14,10 @@ export default function (env) {
 		},
 		output: {
 			path: path.join(__dirname, 'dist'),
-			pathinfo: true, // adds comments to output - do not use for Prod
+			pathinfo: env === 'dev', // adds comments to output
 			filename: '[name].js'
 		},
-		devtool: 'source-map',
+		devtool: env === 'dev' ? 'eval-source-map' : 'source-map',
 		resolve: {
 			modules: [path.resolve('./node_modules'), path.resolve('./src')]
 		},
@@ -46,7 +46,7 @@ export default function (env) {
 				must be updated with every change to loader extensions. */
 					exclude: [
 						/\.html$/,
-						/\.(js|jsx)$/,
+						/\.jsx?$/,
 						/\.css$/,
 						/\.scss$/,
 						/\.bmp$/,
@@ -125,7 +125,8 @@ export default function (env) {
 			contentBase: path.join(__dirname, 'dist'),
 			compress: true,
 			host: 'localhost', // Set this to your virtualDomain if getting “Invalid Host header” error.
-			port: 8080
+			port: 8080,
+			noInfo: true
 		}
 	}
 }

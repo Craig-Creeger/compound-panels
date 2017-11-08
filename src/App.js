@@ -3,7 +3,6 @@ import React from 'react'
 import CompoundPanels from './components/compound-panels/compound-panels'
 
 const App = () => {
-
 	return (
 		<CompoundPanels panelsType={localStorage.getItem('compPanel') || 'accordion'}>
 			<div title='Aardvark' height='120px'>

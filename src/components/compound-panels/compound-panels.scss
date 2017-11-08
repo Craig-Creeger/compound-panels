@@ -1,25 +1,40 @@
+$animationSpeed: 400ms;
+$borderColor: skyblue;
+$borderThickness: 1px;
+$buttonColor: aliceblue;
+$contentColor: ivory;
+
 .compound-panels {
 	margin: 0;
 	padding: 0;
 
-	&__panel {
+	&__panel { // <li>
 		margin: 0;
 		list-style-type: none;
-
-		& > div {
-			padding: 1em 2em;
-		}
-		& > button[aria-expanded="false"] ~ div {
-			display: none;
-		}
+	}
+	
+	&__content {
+		overflow: hidden;
+		background-color: $contentColor;
+		box-sizing: border-box;
+		padding: 0 2em;
+		border-right: $borderThickness solid $borderColor;
+		border-left: $borderThickness solid $borderColor;
+		transition: height $animationSpeed ease-in-out;
 	}
 
-	&__title {
+	&__title { // <button>
 		-webkit-appearance: none;
-		border: none;
-		background-color: #f1f2f2; // gray-lightest
+		border: $borderThickness solid $borderColor;
+		background-color: $buttonColor;
 		padding: 7px;
 		cursor: pointer;
 		width: 100%;
+		margin-top: $borderThickness * -1;
+
+		[aria-expanded="false"] {
+			height: 0;
+			transition: height $animationSpeed ease-in-out;
+		}
 	}
 }

@@ -6,13 +6,13 @@ import './compound-panels.scss'
 
 class CompoundPanels extends React.Component {
 	/* accordion = One, and only one, panel is expanded at all times.
-	independent = Individual collapsible panels. Not restrictions on which can be open or closed.
+	independent = Individual collapsible panels. No restrictions on which can be open or closed.
 	collapsibleAccordion = Like accordion, but possible to collapse all the panels. */
 	constructor (props) {
 		super(props)
 		this.state = {
 			panelsType: props.panelsType,
-			activePanels: props.activePanels
+			activePanels: props.activePanels // An array of panels that are “open”.
 		}
 		this.togglePanel = this.togglePanel.bind(this)
 	}
@@ -21,11 +21,7 @@ class CompoundPanels extends React.Component {
 		if (!this.props.children) {
 			return null // Render nothing if there are no panels.
 		}
-		return (
-			<ul className='compound-panels'>
-				{this.compPanels}
-			</ul>
-		)
+		return <ul className='compound-panels'>{this.compPanels}</ul>
 	}
 
 	componentWillMount () {
@@ -45,6 +41,7 @@ class CompoundPanels extends React.Component {
 					key={idx}
 					isActive={nextState.activePanels.includes(idx)}
 					togglePanel={this.togglePanel}
+					height={panel.props.height}
 				>
 					{panel.props.children}
 				</CompPanel>

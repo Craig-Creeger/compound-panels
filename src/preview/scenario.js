@@ -44,7 +44,7 @@ class Scenario extends React.Component {
 							/>{' '}
 							Standard accordion panel (one panel is always visible)
 						</label>
-						<br />
+
 						<label htmlFor='collapsibleAccordion'>
 							<input
 								type='radio'
@@ -56,7 +56,7 @@ class Scenario extends React.Component {
 							/>{' '}
 							Collapsible accordion panel (it is possible to close all panels)
 						</label>
-						<br />
+
 						<label htmlFor='independent'>
 							<input
 								type='radio'
@@ -80,8 +80,7 @@ class Scenario extends React.Component {
 		 * on the URL.
 		 */
 		const compPanel = this.scenarioForm.compPanel.value.toString()
-		window.location.href = `${window.location
-			.origin}?compPanel=${compPanel}`
+		window.location.href = `${window.location.origin}?compPanel=${compPanel}`
 	}
 }
 
